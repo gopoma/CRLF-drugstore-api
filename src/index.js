@@ -5,6 +5,7 @@ const { connectToDB } = require("./config/db");
 
 
 // Importando routes:
+const categories = require("./routes/categories");
 const products = require("./routes/products");
 
 const app = express();
@@ -26,4 +27,5 @@ app.get("/", (req, res) => {
 });
 
 // Utilizando las rutas:
+categories(app);
 products(app);

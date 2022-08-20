@@ -1,12 +1,5 @@
 const { mongoose } = require("../config/db");
 
-const categorySchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Please provide name"]
-  }
-});
-
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -26,7 +19,10 @@ const productSchema = new mongoose.Schema({
     default: false
   },
   image: String,
-  categories: [categorySchema]
+  categories: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "category"
+  }]
 }, {timestamps:true});
 
 const ProductModel = mongoose.model("product", productSchema);

@@ -14,7 +14,7 @@ function products(app) {
 
   router.post("/", async (req, res) => {
     const result = await productService.create(req.body);
-    return res.status(result.success ? 200 : 400).json(result);
+    return res.status(result.success ? 200 : 400).json(result.data);
   });
 }
 

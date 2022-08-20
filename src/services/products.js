@@ -3,7 +3,7 @@ const dbError = require("../helpers/dbError");
 
 class ProductService {
   async getAll() {
-    return await ProductModel.find();
+    return await ProductModel.find().populate("categories", "name");
   }
 
   async create(data) {
