@@ -14,7 +14,7 @@ function categories(app) {
 
   router.post("/", async (req, res) => {
     const result = await categoryService.create(req.body);
-    return res.status(result.success ? 200 : 400).json(result.data);
+    return res.status(result.success ? 200 : 400).json(result);
   });
 }
 

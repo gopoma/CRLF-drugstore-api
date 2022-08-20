@@ -14,7 +14,12 @@ function products(app) {
 
   router.post("/", async (req, res) => {
     const result = await productService.create(req.body);
-    return res.status(result.success ? 200 : 400).json(result.data);
+    return res.status(result.success ? 200 : 400).json(result);
+  });
+
+  router.delete("/:idProduct", async (req, res) => {
+    const result = await productService.delete(req.params.idProduct);
+    return res.status(result.success ? 200 : 400).json(result);
   });
 }
 

@@ -3,18 +3,18 @@ const dbError = require("../helpers/dbError");
 
 class CategoryService {
   async getAll() {
-    return await CategoryModel.find();
+    const categories = await CategoryModel.find();
+    return categories;
   }
   
   async create(data) {
     try {
-      const newCategory = await CategoryModel.create(data);
+      const category = await CategoryModel.create(data);
       return {
         success: true,
-        data: newCategory
+        category
       };
     } catch(error) {
-      console.log(error);
       return {
         success: false,
         errors: dbError(error)
